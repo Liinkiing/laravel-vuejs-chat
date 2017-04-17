@@ -1,9 +1,6 @@
+@import "layouts/general";
+@import "components/buttons";
+@import "components/alerts";
 
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-// Variables
-@import "variables";
-
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "components/palette";
+@import "components/gradients";

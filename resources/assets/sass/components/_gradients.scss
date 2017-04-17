@@ -1,0 +1,13 @@
+@import "../functions";
+
+.shroom-gradient {
+  background: $violet;
+  background: linear-gradient(to right, $blue, $violet);
+  @each $direction in to-right to-top to-bottom {
+    &.#{$direction} {
+      background: linear-gradient(str_replace($direction, '-', ' '), $blue, $violet);
+    }
+  }
+}
+
+

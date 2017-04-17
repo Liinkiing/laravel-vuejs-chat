@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
+@import "../components/variables";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'PT Sans', 'Lato', 'Roboto', 'Calibri', sans-serif;
+  color: whitesmoke;
+  display: flex;
+  min-height: calc(100vh - 16px);
+  flex-direction: column;
+  &.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.box {
+  padding: 20px;
+  background: whitesmoke;
+  color: black;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+}
+
+input, textarea, select, button {
+  font-family: 'PT Sans', 'Lato', 'Roboto', 'Calibri', sans-serif;
+}
+
+input {
+  padding: 15px;
+  width: 100%;
+  outline: none;
+  border: none;
+  background: darken(whitesmoke, 5%);
+}
+
+form {
+  & .form-group {
+    margin: 10px 0;
+  }
+  & label {
+    margin-top: 0.75rem;
+    margin-bottom: 0.35rem;
+    opacity: 0.75;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    display: block;
+  }
+}
