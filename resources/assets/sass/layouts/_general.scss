@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
 
-@import "../components/variables";
-
 * {
   box-sizing: border-box;
 }
@@ -11,11 +9,49 @@ body {
   color: whitesmoke;
   display: flex;
   min-height: calc(100vh - 16px);
+  margin: 0;
   flex-direction: column;
   &.center {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+main.content {
+  padding-top: $nav-height;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s;
+  color: $blue;
+  &:hover {
+    color: $red;
+    text-decoration: none;
+  }
+  &:focus {
+    color: $red;
+    text-decoration: none;
+  }
+  &:not(.nav-item) {
+    position: relative;
+    &:before {
+      transform: scaleX(0);
+      transition: all 0.3s;
+      content: '';
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      height: 1px;
+      background: $blue;
+    }
+    &:hover {
+      &:before {
+        transform: scaleX(1);
+      }
+    }
   }
 }
 
@@ -32,11 +68,16 @@ input, textarea, select, button {
 }
 
 input {
+  transition: all 0.3s;
   padding: 15px;
   width: 100%;
   outline: none;
   border: none;
   background: darken(whitesmoke, 5%);
+  &:focus {
+    background: darken(whitesmoke, 2%);
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.07)
+  }
 }
 
 form {

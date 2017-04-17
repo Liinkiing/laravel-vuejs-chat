@@ -15,6 +15,7 @@ require('./bootstrap');
 
 Vue.component('chat', require('./components/Chat.vue'));
 Vue.component('auth-form', require('./components/AuthForm.vue'));
+Vue.component('alert', require('./components/Alert.vue'));
 
 const app = new Vue({
     el: '#app'

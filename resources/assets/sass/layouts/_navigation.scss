@@ -1,0 +1,31 @@
+nav.main-nav {
+  display: flex;
+  top: 0;
+  flex-direction: row;
+  background: whitesmoke;
+  box-shadow: $box-shadow;
+  color: black;
+  height: $nav-height;
+  position: fixed;
+  width: 100%;
+  & .container {
+    display: inherit;
+    max-width: 1100px;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+  & .brand h1 {
+    margin: 0;
+    line-height: $nav-height;
+  }
+  & ul {
+    margin: 0;
+    padding: 0;
+    & li {
+      padding: 0 10px;
+      display: inline-block;
+      line-height: $nav-height;
+    }
+  }
+}

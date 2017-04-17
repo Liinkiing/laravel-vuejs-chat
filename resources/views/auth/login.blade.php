@@ -1,14 +1,14 @@
 @extends('layouts.app', ['centered' => true])
 
 @section('body')
-    @if($errors)
-        <div class="alert danger">
+    @if($errors->count() > 0)
+        <alert type="danger">
             <ul>
                 @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
-        </div>
+        </alert>
     @endif
     <auth-form>
         <div slot="login">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input type="text" class="form-control" id="password" placeholder="Entrez votre mot de passe" name="password">
+                    <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" name="password">
                 </div>
                 <button class="button login" type="submit">Se connecter</button>
             </form>

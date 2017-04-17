@@ -1,0 +1,32 @@
+.alert {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background: grey;
+  box-shadow: $box-shadow;
+  border: 2px solid transparentize(whitesmoke, 0.85);
+  position: relative;
+  & ul {
+    list-style-type: none;
+  }
+  & i[class~='fa'] {
+    transition: 0.3s all;
+    opacity: 0.7;
+    position: absolute;
+    right: 10px;
+    font-size: 0.8rem;
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+  &.danger {
+    background: transparentize($red, 0.15);
+  }
+  &.info {
+    background: transparentize($light-blue, 0.15);
+  }
+  &.success {
+    background: transparentize($green, 0.15);
+  }
+}

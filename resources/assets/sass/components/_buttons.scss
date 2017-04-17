@@ -3,10 +3,10 @@
   background: whitesmoke;
   border: none;
   &.login {
-    background: #44d484;
+    background: $green;
   }
   &.register {
-    background: #56a2d4;
+    background: $light-blue;
   }
 }
 .button.login, .button.register {

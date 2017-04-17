@@ -13,7 +13,11 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('homepage');
+
+Route::get('/chat', function() {
+    return view('chat.show');
+})->name('chat');
 
 Auth::routes();
 

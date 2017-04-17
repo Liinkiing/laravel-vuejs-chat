@@ -1,6 +1,15 @@
+@import "components/font-awesome/scss/font-awesome";
+@import "components/palette";
+@import "components/variables";
+
+@import "layouts/normalize";
 @import "layouts/general";
+@import "layouts/navigation";
+
+@import "components/animations";
+@import "components/gradients";
 @import "components/buttons";
 @import "components/alerts";
 
-@import "components/palette";
-@import "components/gradients";
+
+

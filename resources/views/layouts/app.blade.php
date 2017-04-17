@@ -14,8 +14,8 @@
     </script>
 </head>
 <body class="@if(isset($centered) && $centered) center @endif shroom-gradient">
+@include('layouts.inc.nav')
 <div id="app">
-
     <main class="content">
         @yield('body')
     </main>
