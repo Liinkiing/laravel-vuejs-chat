@@ -14,6 +14,9 @@ nav.main-nav {
     width: 100%;
     justify-content: space-between;
     margin: 0 auto;
+    @media screen and (max-width: 960px) {
+      max-width: 800px;
+    }
   }
   & .brand h1 {
     margin: 0;

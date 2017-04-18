@@ -17,6 +17,17 @@ Vue.component('chat', require('./components/Chat.vue'));
 Vue.component('auth-form', require('./components/AuthForm.vue'));
 Vue.component('alert', require('./components/Alert.vue'));
 
+moment.locale(document.documentElement.lang);
+
+Vue.filter('timeago', function(value) {
+    return moment.utc(value).local().fromNow();
+});
+
+
+Vue.filter('utc', function(value) {
+    return moment.utc(value);
+});
+
 const app = new Vue({
     el: '#app'
 });

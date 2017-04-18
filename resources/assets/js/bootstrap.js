@@ -9,7 +9,7 @@ window._ = require('lodash');
 
 window.$ = window.jQuery = require('jquery');
 
-console.log(window.Laravel.csrfToken);
+window.moment = require('moment');
 
 
 /**
