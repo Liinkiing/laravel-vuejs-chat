@@ -24,6 +24,9 @@
                 selected: "login"
             }
         },
+        created() {
+            if(window.location.href.includes('register')) this.selected = "register";
+        },
         methods: {
             setTab(tab) {
                 this.selected = tab;

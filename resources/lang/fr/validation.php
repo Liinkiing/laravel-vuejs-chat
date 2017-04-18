@@ -118,6 +118,7 @@ return [
         'name'                  => 'Nom',
         'username'              => 'pseudo',
         'email'                 => 'Adresse e-mail',
+        'email_register'        => 'Adresse e-mail',
         'first_name'            => 'Prénom',
         'last_name'             => 'Nom',
         'password'              => 'Mot de passe',

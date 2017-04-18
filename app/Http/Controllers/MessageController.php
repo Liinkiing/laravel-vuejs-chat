@@ -23,7 +23,7 @@ class MessageController extends Controller
     public function store(Request $request) {
         $message = Message::create(array_merge($request->all(), ['author_id' => \Auth::user()->id]));
         $message->load('author');
-        event(new MessageCreated($message));
+        broadcast(new MessageCreated($message))->toOthers();
         return ['status' => 200, 'message' => $message];
     }
 

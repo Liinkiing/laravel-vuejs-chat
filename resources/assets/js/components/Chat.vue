@@ -2,7 +2,7 @@
     <div class="box chat-box">
         <h2>Chat</h2>
         <ul class="messages">
-            <li v-for="message in state.messages" class="message">
+            <li v-for="message in state.messages" class="message" :class="{'is-logged-user': this.user.name === message.author.name}">
                 {{ message.body }}
                 <div><small>{{ message.author.name }} </small></div>
             </li>
@@ -31,6 +31,20 @@
         },
         mounted() {
             this.messagesList = document.querySelector('ul.messages');
+            this.user = window.user;
+            Echo.join('chatroom')
+                .here(users => {
+                    console.log(users)
+                })
+                .joining(user => {
+                    console.log(user)
+                })
+                .leaving(user => {
+                    console.log(user)
+                })
+                .listen('MessageCreated', e => {
+                    store.pushMessage(e.message);
+                });
         },
         updated() {
             this.messagesList.scrollTop = this.messagesList.scrollHeight;
@@ -45,6 +59,8 @@
     }
 </script>
 <style lang="scss">
+    @import "../../sass/components/palette";
+
     .chat-box {
         min-width: 50vw;
     }
@@ -57,6 +73,9 @@
             padding: 10px;
             &:nth-of-type(even) {
                 background: transparentize(black, 0.97);
+            }
+            &.is-logged-user {
+                background: transparentize($blue, 0.85);
             }
         }
     }

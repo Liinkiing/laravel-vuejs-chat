@@ -16,7 +16,7 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="email">Adresse mail</label>
-                    <input type="text" class="form-control" id="email" placeholder="Entrez votre adresse mail" name="email">
+                    <input type="text" class="form-control" value="{{ old('email') }}" id="email" placeholder="Entrez votre adresse mail" name="email">
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
@@ -30,11 +30,11 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">Nom</label>
-                    <input type="text" class="form-control" id="name" placeholder="Entrez votre nom" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="Entrez votre nom" name="name" value="{{ old('name') }}">
                 </div>
                 <div class="form-group">
-                    <label for="email">Adresse mail</label>
-                    <input type="text" class="form-control" id="email" placeholder="Entrez votre adresse mail" name="email">
+                    <label for="email_register">Adresse mail</label>
+                    <input type="text" class="form-control" id="email_register" placeholder="Entrez votre adresse mail" name="email_register" value="{{ old('email_register') }}">
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe</label>

@@ -9,6 +9,8 @@ window._ = require('lodash');
 
 window.$ = window.jQuery = require('jquery');
 
+console.log(window.Laravel.csrfToken);
+
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -35,11 +37,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo'
+import Echo from 'laravel-echo'
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '44093531b31f60bc4ef8',
+    cluster: 'eu'
+});

@@ -17,6 +17,7 @@ class ChatController extends Controller
     }
 
     public function show() {
+        \JavaScript::put(['user' => \Auth::user()]);
         return view('chat.show');
     }
 

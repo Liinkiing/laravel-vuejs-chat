@@ -11,8 +11,13 @@ class ChatStore {
     }
 
     addMessage(message) {
+        this.state.messages.push({body: message, author: {name: document.getElementById('logged-user').innerText}});
         axios.post('/messages', {body: message})
-            .then(response => { this.state.messages.push(response.data.message) } );
+            .then(response => { this.state.messages.pop(); this.state.messages.push(response.data.message) } );
+    }
+
+    pushMessage(message) {
+        this.state.messages.push(message);
     }
 }
 

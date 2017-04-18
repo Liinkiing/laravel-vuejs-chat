@@ -5,7 +5,7 @@
         </div>
         <ul class="nav-items">
             @if(Auth::check())
-                <li><a class="nav-item" href="#">{{ Auth::user()->name }}</a></li>
+                <li><a id="logged-user" class="nav-item" href="#">{{ Auth::user()->name }}</a></li>
                 <li><a class="nav-item"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                        href="{{ route('logout') }}">Se déconnecter</a></li>
