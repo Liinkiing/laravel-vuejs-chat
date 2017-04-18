@@ -4,10 +4,13 @@
         <ul class="messages">
             <li v-for="message in state.messages" class="message">
                 {{ message.body }}
+                <div><small>{{ message.author.name }} </small></div>
             </li>
         </ul>
-        <input @keyup.enter="sendMessage" type="text" v-model="newMessage">
-        <button @click="sendMessage">Envoyer</button>
+        <div class="send-input">
+            <input @keyup.enter="sendMessage" type="text" v-model="newMessage">
+            <button :disabled="disabled" class="button send" @click="sendMessage">Envoyer</button>
+        </div>
     </div>
 </template>
 <script>
@@ -21,6 +24,11 @@
                 state: store.state
             }
         },
+        computed: {
+            disabled() {
+                return this.newMessage.trim().length === 0;
+            }
+        },
         mounted() {
             this.messagesList = document.querySelector('ul.messages');
         },
@@ -29,7 +37,8 @@
         },
         methods: {
             sendMessage() {
-                store.addMessage({author: 'Omar Jbara', timestamp: new Date(), body: this.newMessage});
+                if(this.disabled) return;
+                store.addMessage(this.newMessage);
                 this.newMessage = "";
             }
         },
@@ -42,7 +51,7 @@
     ul.messages {
         padding: 0;
         list-style: none;
-        max-height: 200px;
+        max-height: 400px;
         overflow-y: auto;
         & li {
             padding: 10px;
@@ -50,5 +59,9 @@
                 background: transparentize(black, 0.97);
             }
         }
+    }
+    .send-input {
+        display: flex;
+        flex-direction: row;
     }
 </style>

@@ -15,10 +15,11 @@ Route::get('/', function () {
     return view('index');
 })->name('homepage');
 
-Route::get('/chat', function() {
-    return view('chat.show');
-})->name('chat');
+Route::get('/chat', 'ChatController@show')->name('chat');
+
+
+Route::get('/messages', 'MessageController@index')->name('messages.index');
+Route::post('/messages', 'MessageController@store')->name('messages.store');
+
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');

@@ -23,14 +23,16 @@ class LoginController extends Controller
     /**
      * Where to redirect users after login.
      *
-     * @var string
+     * @return string
      */
-    protected $redirectTo = '/home';
+    public function redirectPath()
+    {
+        return route('chat');
+    }
 
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {

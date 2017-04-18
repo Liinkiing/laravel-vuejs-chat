@@ -2251,6 +2251,9 @@ module.exports = {
 //
 //
 //
+//
+//
+//
 
 
 var store = __webpack_require__(36).default;
@@ -2262,6 +2265,12 @@ module.exports = {
             state: store.state
         };
     },
+
+    computed: {
+        disabled: function disabled() {
+            return this.newMessage.trim().length === 0;
+        }
+    },
     mounted: function mounted() {
         this.messagesList = document.querySelector('ul.messages');
     },
@@ -2271,7 +2280,8 @@ module.exports = {
 
     methods: {
         sendMessage: function sendMessage() {
-            store.addMessage({ author: 'Omar Jbara', timestamp: new Date(), body: this.newMessage });
+            if (this.disabled) return;
+            store.addMessage(this.newMessage);
             this.newMessage = "";
         }
     }
@@ -2343,12 +2353,26 @@ var ChatStore = function () {
         this.state = {
             messages: []
         };
+        this.fetchMessages();
     }
 
     _createClass(ChatStore, [{
-        key: "addMessage",
+        key: 'fetchMessages',
+        value: function fetchMessages() {
+            var _this = this;
+
+            axios.get('/messages').then(function (response) {
+                return _this.state.messages = response.data;
+            });
+        }
+    }, {
+        key: 'addMessage',
         value: function addMessage(message) {
-            this.state.messages.push(message);
+            var _this2 = this;
+
+            axios.post('/messages', { body: message }).then(function (response) {
+                _this2.state.messages.push(response.data.message);
+            });
         }
     }]);
 
@@ -2369,7 +2393,7 @@ exports.push([module.i, "", ""]);
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n.chat-box {\n  min-width: 50vw;\n}\nul.messages {\n  padding: 0;\n  list-style: none;\n  max-height: 200px;\n  overflow-y: auto;\n}\nul.messages li {\n    padding: 10px;\n}\nul.messages li:nth-of-type(even) {\n      background: rgba(0, 0, 0, 0.03);\n}\n", ""]);
+exports.push([module.i, "\n.chat-box {\n  min-width: 50vw;\n}\nul.messages {\n  padding: 0;\n  list-style: none;\n  max-height: 400px;\n  overflow-y: auto;\n}\nul.messages li {\n    padding: 10px;\n}\nul.messages li:nth-of-type(even) {\n      background: rgba(0, 0, 0, 0.03);\n}\n.send-input {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n}\n", ""]);
 
 /***/ }),
 /* 39 */
@@ -29886,8 +29910,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.state.messages), function(message) {
     return _c('li', {
       staticClass: "message"
-    }, [_vm._v("\n            " + _vm._s(message.body) + "\n        ")])
-  })), _vm._v(" "), _c('input', {
+    }, [_vm._v("\n            " + _vm._s(message.body) + "\n            "), _c('div', [_c('small', [_vm._v(_vm._s(message.author.name) + " ")])])])
+  })), _vm._v(" "), _c('div', {
+    staticClass: "send-input"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -29911,10 +29937,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _vm._v(" "), _c('button', {
+    staticClass: "button send",
+    attrs: {
+      "disabled": _vm.disabled
+    },
     on: {
       "click": _vm.sendMessage
     }
-  }, [_vm._v("Envoyer")])])
+  }, [_vm._v("Envoyer")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
